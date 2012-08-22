@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Zenjungle simple example</title>
+  
+  <meta charset="utf-8">
+  <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="../src/zenjungle.js"></script>
+</head>
+<body>
+  <script>
+    var hero_unit = zenjungle([
+          ['div.hero-unit', [
+            ['h1', 'Hello, world!'],
+            ['p', 'This is a template demonstrating power of zenjungle']
+          ]]
+        ]),
+        columns = zenjungle([
+          ['div.row', [
+            ['div.span8', [
+              ['h2', 'Heading'],
+              ['p', 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.'],
+              ['a.btn[href=#]', 'View details &raquo;']
+            ]],
+            ['div.span4', [
+              ['h2', 'Heading'],
+              ['p', 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.'],
+              ['a.btn[href=#]', 'View details &raquo;']
+            ]]
+          ]]
+        ]),
+        footer = zenjungle([
+          ['hr'],
+          ['footer', [
+            ['p', 'This is a footer']
+          ]]
+        ]);
+        
+    document.body.appendChild(zenjungle([
+      ['div.container#main', [
+        hero_unit,
+        columns,
+        footer
+      ]]
+    ]))
+  </script>
+</body>
+</html>
