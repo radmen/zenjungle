@@ -1,4 +1,4 @@
-# zenjungle.js - when ZEN comes to (micro)jungle
+# zenjungle.js
 
 Power of [microjungle](https://github.com/deepsweet/microjungle), simpliefied.
 
