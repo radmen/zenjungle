@@ -28,17 +28,17 @@ var zenjungle = (function() {
   // converts some patterns to properties
   var zen = function(string) {
     var replace = {
-          '#([a-zA-Z][a-zA-Z0-9\\-_]*)': function(match) {
-            return {'id': match[1]};
-          },
-          '\\.([a-zA-Z][a-zA-Z0-9\\-_]*)': function(match) {
-            return {'class': match[1]};
-          },
           '\\[([a-z\\-]+)=([^\\]]+)\\]': function(match) {
             var prop = {};
             prop[match[1]] = match[2].replace(/^["']/, '').replace(/["']$/, '');
 
             return prop;
+          },
+          '#([a-zA-Z][a-zA-Z0-9\\-_]*)': function(match) {
+            return {'id': match[1]};
+          },
+          '\\.([a-zA-Z][a-zA-Z0-9\\-_]*)': function(match) {
+            return {'class': match[1]};
           }
         },
         props = {};
