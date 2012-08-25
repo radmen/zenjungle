@@ -1,6 +1,6 @@
 [submodule "assets/qunit"]
 	path = assets/qunit
 	url = https://github.com/jquery/qunit.git
-[submodule "assets/micro-selector"]
-	path = assets/micro-selector
-	url = https://github.com/fabiomcosta/micro-selector.git
+[submodule "assets/qwery"]
+	path = assets/qwery
+	url = https://github.com/ded/qwery.git

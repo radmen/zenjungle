@@ -1,4 +1,4 @@
-var fixture = $u('#qunit-fixture').pop();
+var fixture = qwery('#qunit-fixture').pop();
     
 module('non-zen');
 test('check basic append', function() {
@@ -8,7 +8,7 @@ test('check basic append', function() {
     ['span', 'Lorem ipsum']
   ]));
   
-  element = $u('span', fixture).pop();
+  element = qwery('span', fixture).pop();
   
   equal('SPAN', element.tagName, 'element is span')
   equal('Lorem ipsum', element.innerHTML, 'element inner HTML equals "Lorem ipsum"');
@@ -24,7 +24,7 @@ test('check append with properties', function() {
     }]
   ]))
   
-  element = $u('div', fixture).pop();
+  element = qwery('div', fixture).pop();
   
   equal('test-class', element.className, 'element class equals "test-class"');
   equal('test-id', element.id, 'element id equals "test-id"');
@@ -44,11 +44,11 @@ test('check nested elements', function() {
     ]]
   ]));
 
-  equal(true, $u('div > ul', fixture).length, 'UL is DIVs direct child');
-  equal(true, $u('div > span', fixture).length, 'SPAN is DIVs direct child');
-  equal(false, $u('div > li').length, 'LIs are not direct childs of DIV')
-  equal(4, $u('div > ul > li', fixture).length, 'list has 4 elements');
-  equal('test', $u('li', fixture)[2].className, 'third LI has class');
+  equal(true, qwery('div > ul', fixture).length, 'UL is DIVs direct child');
+  equal(true, qwery('div > span', fixture).length, 'SPAN is DIVs direct child');
+  equal(false, qwery('div > li').length, 'LIs are not direct childs of DIV')
+  equal(4, qwery('div > ul > li', fixture).length, 'list has 4 elements');
+  equal('test', qwery('li', fixture)[2].className, 'third LI has class');
 });
 
 test('DOM elements mixin', function() {
@@ -59,7 +59,7 @@ test('DOM elements mixin', function() {
     ]]
   ]));
   
-  equal(1, $u('div > span', fixture).length);
+  equal(1, qwery('div > span', fixture).length);
 });
 
 test('zenjungle mixins', function() {
@@ -72,7 +72,7 @@ test('zenjungle mixins', function() {
     ]]
   ]));
   
-  equal(1, $u('div > span', fixture).length);
+  equal(1, qwery('div > span', fixture).length);
 });
 
 module('zen');
@@ -82,7 +82,7 @@ test('check element class', function() {
     ['div.test']
   ]));
   
-  equal('test', $u('div', fixture)[0].className);
+  equal('test', qwery('div', fixture)[0].className);
 });
 
 test('check element id', function() {
@@ -91,7 +91,7 @@ test('check element id', function() {
     ['div#test']
   ]));
   
-  equal('test', $u('div', fixture)[0].id);
+  equal('test', qwery('div', fixture)[0].id);
 });
 
 test('check attributes', function() {
@@ -100,8 +100,8 @@ test('check attributes', function() {
     ['a[href=#fragment][class=test]']
   ]));
   
-  equal('fragment', $u('a', fixture)[0].href.split('#')[1]);
-  equal('test', $u('a', fixture)[0].className);
+  equal('fragment', qwery('a', fixture)[0].href.split('#')[1]);
+  equal('test', qwery('a', fixture)[0].className);
 });
 
 test('mixed properties #1', function() {
@@ -111,7 +111,7 @@ test('mixed properties #1', function() {
     ['input#id.class[type=text][value=some-text]']
   ]));
   
-  element = $u('input', fixture)[0];
+  element = qwery('input', fixture)[0];
   
   equal('class', element.className, 'class name equals "class"');
   equal('id', element.id, 'id equals "id"');
@@ -126,7 +126,7 @@ test('mixed properties #2', function() {
     ['input.class[type=text]#id[value=some-text]']
   ]));
   
-  element = $u('input', fixture)[0];
+  element = qwery('input', fixture)[0];
   
   equal('class', element.className, 'class name equals "class"');
   equal('id', element.id, 'id equals "id"');
