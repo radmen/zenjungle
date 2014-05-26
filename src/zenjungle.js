@@ -8,13 +8,15 @@ var zenjungle = (function() {
       },
       each = function (object, callback) {
             var key;
-            if (object.length) {
-                for (key = 0; key < object.length; key++) {
-                    callback(object[key], key);
-                }
-            } else {
-                for (key in object) {
-                    object.hasOwnProperty(key) && callback(object[key], key);
+            if (object) {
+                if (object.length) {
+                    for (key = 0; key < object.length; key++) {
+                        callback(object[key], key);
+                    }
+                } else {
+                    for (key in object) {
+                        object.hasOwnProperty(key) && callback(object[key], key);
+                    }
                 }
             }
       },
