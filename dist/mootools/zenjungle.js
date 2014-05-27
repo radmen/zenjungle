@@ -1,10 +1,9 @@
 /**
- * zenjungle - HTML via JSON with elements of Zen Coding 
+ * zenjungle v1.0.1 - HTML via JSON with elements of Zen Coding 
  *
  * https://github.com/radmen/zenjungle
- * Copyright (c) 2012 Radoslaw Mejer <radmen@gmail.com>
+ * Copyright (c) 2014 Radoslaw Mejer <radmen@gmail.com>
  */
-
 var zenjungle = (function() {
   // helpers
   var is_object = function(object) {
@@ -13,12 +12,19 @@ var zenjungle = (function() {
       is_array = function(object) {
         return '[object Array]' == Object.prototype.toString.call(object);
       },
-      each = function(object, callback) {
-        var key;
-
-        for(key in object) {
-          object.hasOwnProperty(key) && callback(object[key], key);
-        }
+      each = function (object, callback) {
+            var key;
+            if (object) {
+                if (object.length) {
+                    for (key = 0; key < object.length; key++) {
+                        callback(object[key], key);
+                    }
+                } else {
+                    for (key in object) {
+                        object.hasOwnProperty(key) && callback(object[key], key);
+                    }
+                }
+            }
       },
       merge = function() {
         var merged = {}
@@ -105,6 +111,7 @@ var zenjungle = (function() {
   
   return monkeys;
 })();
+
 Element.implement({
   
   zenjungle: function(template) {

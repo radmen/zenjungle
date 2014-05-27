@@ -1,10 +1,24 @@
 {
-  "name"          : "zenjungle",
-  "description"   : "HTML via JSON with elements of Zen Coding",
-  "homepage"      : "https://github.com/radmen/zenjungle",
-  "keywords"      : ["util", "template", "client", "browser"],
-  "author"        : "Radoslaw Mejer <radmen@gmail.com>",
-  "repository"    : {"type": "git", "url": "git://github.com/radmen/zenjungle.git"},
-  "main"          : "zenjungle.js",
-  "version"       : "1.0.0"
+  "name": "zenjungle",
+  "description": "HTML via JSON with elements of Zen Coding",
+  "homepage": "https://github.com/radmen/zenjungle",
+  "keywords": [
+    "util",
+    "template",
+    "client",
+    "browser"
+  ],
+  "author": "Radoslaw Mejer <radmen@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/radmen/zenjungle.git"
+  },
+  "main": "zenjungle.js",
+  "version": "1.0.1",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-concat": "^0.4.0",
+    "grunt-contrib-uglify": "^0.4.0"
+  }
 }

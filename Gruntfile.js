@@ -3,18 +3,17 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     
-    pkg: '<json:package.json>',
-    
-    meta: {
-      banner: '/**\n' +
-        ' * <%= pkg.name + " - " + pkg.description %> \n' +
-        ' *\n' + 
-        ' * <%= pkg.homepage %>\n' +
-        ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
-        ' */'
-    },
+    pkg: grunt.file.readJSON('package.json'),
     
     concat: {
+      options: {
+        banner: '/**\n' +
+          ' * <%= pkg.name + " v" + pkg.version + " - " + pkg.description %> \n' +
+          ' *\n' + 
+          ' * <%= pkg.homepage %>\n' +
+          ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
+          ' */\n'
+      },
       
       dist: {
         src: ['<banner>', 'src/zenjungle.js'],
@@ -27,7 +26,7 @@ module.exports = function(grunt) {
       }
     },
     
-    min: {
+    uglify: {
       
       dist: {
         src: ['src/zenjungle.js'],
@@ -39,7 +38,10 @@ module.exports = function(grunt) {
         dest: 'dist/mootools/zenjungle.min.js'
       }
     }
-  })
+  });
+
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   
-  grunt.registerTask('default', 'concat min');
+  grunt.registerTask('default', ['concat', 'uglify']);
 };
