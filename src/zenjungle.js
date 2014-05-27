@@ -6,12 +6,19 @@ var zenjungle = (function() {
       is_array = function(object) {
         return '[object Array]' == Object.prototype.toString.call(object);
       },
-      each = function(object, callback) {
-        var key;
-
-        for(key in object) {
-          object.hasOwnProperty(key) && callback(object[key], key);
-        }
+      each = function (object, callback) {
+            var key;
+            if (object) {
+                if (object.length) {
+                    for (key = 0; key < object.length; key++) {
+                        callback(object[key], key);
+                    }
+                } else {
+                    for (key in object) {
+                        object.hasOwnProperty(key) && callback(object[key], key);
+                    }
+                }
+            }
       },
       merge = function() {
         var merged = {}
