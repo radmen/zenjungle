@@ -108,12 +108,12 @@ test('mixed properties #1', function() {
   var element;
   
   fixture.appendChild(zenjungle([
-    ['input#id.class[type=text][value=some-text]']
+    ['input#id.classA.classB[type=text][value=some-text]']
   ]));
   
   element = qwery('input', fixture)[0];
   
-  equal('class', element.className, 'class name equals "class"');
+  equal('classA classB', element.className, 'class name equals "classA classB"');
   equal('id', element.id, 'id equals "id"');
   equal('text', element.type, 'element type is "text"');
   equal('some-text', element.value, 'element value is "some-text"');

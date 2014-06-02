@@ -46,7 +46,7 @@ var zenjungle = (function() {
           },
           '(\\.[a-zA-Z][a-zA-Z0-9\\-_]*)+': function (match) {
             return {
-              'class': match[0].split(".").join(" ")
+              'class': match[0].substr(1).split(".").join(" ")
             };
           }
         },
