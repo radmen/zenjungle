@@ -1,13 +1,13 @@
 /**
- * zenjungle v1.0.1 - HTML via JSON with elements of Zen Coding 
+ * zenjungle v1.0.2 - HTML via JSON with elements of Zen Coding 
  *
  * https://github.com/radmen/zenjungle
  * Copyright (c) 2014 Radoslaw Mejer <radmen@gmail.com>
  */
 var zenjungle = (function() {
   // helpers
-  var is_object = function(object) {
-        return '[object Object]' == Object.prototype.toString.call(object);
+  var is_object = function (object) {
+            return (!!object && '[object Object]' == Object.prototype.toString.call(object) && !object.nodeType);
       },
       is_array = function(object) {
         return '[object Array]' == Object.prototype.toString.call(object);
@@ -25,7 +25,7 @@ var zenjungle = (function() {
                     }
                 }
             }
-      },
+        },
       merge = function() {
         var merged = {}
 
@@ -50,8 +50,10 @@ var zenjungle = (function() {
           '#([a-zA-Z][a-zA-Z0-9\\-_]*)': function(match) {
             return {'id': match[1]};
           },
-          '\\.([a-zA-Z][a-zA-Z0-9\\-_]*)': function(match) {
-            return {'class': match[1]};
+          '(\\.[a-zA-Z][a-zA-Z0-9\\-_]*)+': function (match) {
+            return {
+              'class': match[0].substr(1).split(".").join(" ")
+            };
           }
         },
         props = {};
@@ -98,11 +100,10 @@ var zenjungle = (function() {
           monkeys(element, where);
         }
       }
-      else if(1 == element.nodeType || 11 == element.nodeType) {
+      else if(element.nodeType) {
         where.appendChild(element);
-      }
-      else if('string' === typeof(element)) {
-        where.innerHTML += element;
+      } else if ('string' === typeof (element) || 'number' === typeof (element)) {
+         where.appendChild(document.createTextNode(element));
       }
     });
     

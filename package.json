@@ -14,7 +14,7 @@
     "url": "git://github.com/radmen/zenjungle.git"
   },
   "main": "zenjungle.js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
